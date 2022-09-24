@@ -1,0 +1,29 @@
+.form-content {
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+        margin: 10px 0;
+        padding: 10px;
+        border-bottom: 1px solid black;
+}
+
+.form-content label {
+    margin-right: 10px;
+}
+
+.form-item {
+    width: 30%;
+}
+
+.combined-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.combined-content label {
+    margin-right: 10px;
+}
+
+.combined-item {
+    margin: 10px 0;
+}

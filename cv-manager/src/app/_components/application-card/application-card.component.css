@@ -1,0 +1,22 @@
+.card{
+    background-color: rgb(219, 219, 219);
+    border: 1px solid silver;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 10px 0;
+
+}
+
+.search-button {
+    width: 200px;
+}
+
+.clickable {
+    color: rgb(0, 60, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+b{
+    background-color: yellow;
+}

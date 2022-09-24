@@ -1,0 +1,166 @@
+<div *ngIf="!isLoading" class="container-fluid m-1">
+  <div class="container rounded bg-white mt-5">
+      <div class="row">
+          <div class="col-md-12">
+              <h3>Search Application repository with CVs</h3>
+          </div>
+      </div>
+      <form [formGroup]="searchForm" class="form-container">
+            <div class="form-content">
+
+              <div class="form-item">
+                  <label>Name</label>
+                  <input  formControlName="firstnameControl" placeholder="firstname" >
+              </div> 
+
+              <div class="form-item">
+                  <label>Last Name</label>
+                  <input  formControlName="lastNameControl" placeholder="lastname" >
+              </div> 
+              
+                  
+              <div class="form-item">
+                  <button type="button" (click)="searchByApplicantName()"  class="search-button" >
+                      Search by Name
+                  </button>
+              </div>
+
+          </div>
+          <div class="form-content">
+
+              <div class="form-item">
+                  <label>Education level</label>
+                  <select formControlName="educationLevelControl">
+                          <option value="1" >Elementary school</option>
+                          <option value="2">High school</option>
+                          <option value="3">BSc</option>
+                          <option value="4">MSc</option>
+                          <option value="5">PhD</option>
+                  </select>
+              </div>
+              <div class="form-item">
+                  <button type="button" (click)="searchByEducationLevel()"  class="button-add pt-2 d-flex justify-content-center w-10" >
+                      Search by education
+                  </button>
+              </div>
+
+          </div>
+          <div class="form-content">
+
+              <div class="form-item">
+                  <label>Cover Letter content</label>
+                  <input  formControlName="coverLetterContentControl" placeholder="Cover letter content" >
+              </div> 
+
+              <div class="form-item">
+                  <button type="button" (click)="searchByCoverLetterContent()"  class="button-add pt-2 d-flex justify-content-center w-10" >
+                      Search by content
+                  </button>
+              </div>
+
+          </div>
+
+          <div class="form-content">
+
+              <div class="form-item">
+                      <label>City</label>
+                      <input  formControlName="cityNameControl" placeholder="City name" >
+              </div> 
+
+              <div class="form-item">
+                  <label>Radius (KM)</label>
+                  <input  formControlName="radiusControl" placeholder="radius in KM" >
+              </div> 
+              <div class="form-item">
+                  <button type="button" (click)="searchByDistanceFromCity()"  class="search-button" >
+                      Search by geolocation
+                  </button>
+              </div>
+
+          </div>
+
+
+          <div class="form-content">
+
+              <div class="form-item">
+                  <label>Phrase query</label>
+                  <input  formControlName="phraseControl" placeholder="write a phrase" >
+              </div> 
+
+              <div class="form-item">
+                  <button type="button" (click)="searchByPhraseQuery()"  class="button-add pt-2 d-flex justify-content-center w-10" >
+                      Search by phrase
+                  </button>
+              </div>
+
+          </div>
+      </form>
+
+      <form [formGroup]="combinedSearchForm" class="combined-form">
+          <div class="combined-content">
+
+              <div class="combined-item">
+                  <label>Firstname</label>
+                  <input  formControlName="firstnameControl" placeholder="Firstname" >
+              </div> 
+
+              <div class="combined-item">
+                <label>OPERATION</label>
+                <select formControlName="firstOperationControl">
+                    <option value="AND" >AND</option>
+                    <option value="OR">OR</option>
+                </select>
+              </div>
+
+              <div class="combined-item">
+                  <label>Last Name</label>
+                  <input  formControlName="lastnameControl" placeholder="Lastname" >
+              </div> 
+
+              <div class="combined-item">
+                <label>OPERATION</label>
+                <select formControlName="secondOperationControl">
+                    <option value="AND" >AND</option>
+                    <option value="OR">OR</option>
+                </select>
+              </div>
+
+              <div class="combined-item">
+                <label>Education level</label>
+                <select formControlName="educationLevelControl">
+                        <option value="1" >Elementary school</option>
+                        <option value="2">High school</option>
+                        <option value="3">BSc</option>
+                        <option value="4">MSc</option>
+                        <option value="5">PhD</option>
+                </select>
+               </div>
+
+              <div class="combined-item">
+                  <label>OPERATION</label>
+                  <select formControlName="thirdOperationControl">
+                          <option value="AND" >AND</option>
+                          <option value="OR">OR</option>
+                  </select>
+              </div>
+
+              <div class="combined-item">
+                  <label>Cover Letter content</label>
+                  <input formControlName="coverLetterContentControl" placeholder="Cover letter content" >
+              </div> 
+          </div>
+
+          <div class="row">
+              <div class="col-md-12">
+                  <button type="button" (click)="searchWithBooleanQuery()"  class="button-add pt-2 d-flex justify-content-center w-10" >
+                      Search combined
+                  </button>
+              </div>
+          </div>
+      </form>  
+  </div>
+  <h4>Search results</h4>
+  <div class="cards">
+        <app-application-card *ngFor="let document of applicationsResult" [application]='document'></app-application-card>
+    </div>
+</div>

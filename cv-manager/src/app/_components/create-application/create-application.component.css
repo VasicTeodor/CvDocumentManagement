@@ -1,0 +1,13 @@
+.job-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+label {
+    margin-bottom: 3px;
+}

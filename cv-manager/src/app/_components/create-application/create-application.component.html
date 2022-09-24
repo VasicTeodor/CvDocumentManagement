@@ -1,0 +1,63 @@
+<form [formGroup]="applicationForm" (ngSubmit)="saveChanges()" class="col-md-12">
+  <div class="row">
+
+          <div class="col-md-12">
+              <div class="job-form">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h2 class="text-right">Create new application</h2>
+                  </div>
+
+                              <label>First Name</label>
+                              <input formControlName="firstname">
+                              
+                              <label>Last Name</label>
+                              <input formControlName="lastname" >
+
+                              <label>Phone Number</label>
+                              <input formControlName="phone" >
+
+                              <label>Email</label>
+                              <input formControlName="email" >
+
+                              <label>City</label>
+                              <input formControlName="city" >
+                      </div>
+
+                      <div class="job-form">
+                              <label>Education level</label>
+                              <select formControlName="educationLevel">
+                                  <option *ngFor="let role of educationLevels" value="{{role.value}}">{{role.display}}</option>
+                              </select>
+                      </div>
+                  </div>
+
+                 
+                  <div class="row mt-3">
+                      
+                      <div class="col-md-6">
+                          <label>
+                              CV:&nbsp;<input formControlName="cvFile" (change)="onCvFileChange($event)"  type="file" accept="application/pdf" name="cv">
+                          </label>
+                          <div *ngIf="form.cvFile.touched && form.cvFile.invalid" class="alert alert-danger">
+                              <div>File is required.</div>
+                          </div>  
+                      </div>
+                      <div class="col-md-6">
+                          <label>
+                              Cover letter:&nbsp;<input formControlName="coverLetter" (change)="onLetterFileChange($event)" type="file" accept="application/pdf"  name="cover">
+                          </label>
+                          <div *ngIf="form.coverLetter.touched && form.coverLetter.invalid" class="alert alert-danger">
+                              <div>File is required.</div>
+                          </div>   
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="save-button">
+                              <button class="button-add">Submit application</button>                       
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+</form>
